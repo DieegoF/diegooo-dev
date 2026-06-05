@@ -13,7 +13,7 @@ export const PROYECTOS = [
     tecnologias: ['.NET 8', 'C#', 'SQL Server', 'React', 'EF Core', 'Multi-Tenancy'],
     colorAcento: '#06b6d4',
     tieneDemo: true,  // Habilita el botón "Ver Demo Simulada"
-    github: '#',
+    github: 'https://github.com/DieegoF/GymControl',
     live: null,
   },
   {
@@ -28,7 +28,7 @@ export const PROYECTOS = [
     tecnologias: ['.NET 8', 'C#', 'React', 'Vite', 'SQL Server', 'SignalR'],
     colorAcento: '#3b82f6',
     tieneDemo: false,
-    github: '#',
+    github: 'https://github.com/DieegoF/DeliFast.App',
     live: null,
   },
   {
@@ -43,7 +43,7 @@ export const PROYECTOS = [
     tecnologias: ['.NET 8', 'C#', 'React', 'SQL Server', 'QR Code', 'JWT Auth'],
     colorAcento: '#8b5cf6',
     tieneDemo: false,
-    github: '#',
+    github: null,
     live: null,
   },
   {
@@ -58,7 +58,7 @@ export const PROYECTOS = [
     tecnologias: ['.NET 8', 'C#', 'React', 'SQL Server', 'EF Core', 'Role Auth'],
     colorAcento: '#10b981',
     tieneDemo: false,
-    github: '#',
+    github: null,
     live: null,
   },
 ]

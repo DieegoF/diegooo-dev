@@ -68,11 +68,36 @@ export function Contacto() {
   const actualizar = (campo) => (e) =>
     setFormulario((prev) => ({ ...prev, [campo]: e.target.value }))
 
-  // Simula el envío — conectar aquí con EmailJS, Resend u otro servicio
   const manejarEnvio = async (e) => {
     e.preventDefault()
     setEstadoEnvio('cargando')
-    await new Promise((res) => setTimeout(res, 2200))
+
+    const labelTipo       = TIPOS_PROYECTO.find(t => t.value === formulario.tipoProyecto)?.label || formulario.tipoProyecto
+    const labelPresupuesto = RANGOS_PRESUPUESTO.find(r => r.value === formulario.presupuesto)?.label || 'No especificado'
+    const labelPlazo      = PLAZOS.find(p => p.value === formulario.plazo)?.label || 'No especificado'
+
+    let mensaje = `👋 *Nuevo contacto desde diegodev.com.ar*\n`
+    mensaje += `📋 *Tipo:* ${modo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta general'}\n\n`
+    mensaje += `*Nombre:* ${formulario.nombre}\n`
+    mensaje += `*Email:* ${formulario.email}\n`
+
+    if (modo === 'presupuesto') {
+      mensaje += `\n*Proyecto:* ${labelTipo}\n`
+      mensaje += `*Presupuesto:* ${labelPresupuesto}\n`
+      mensaje += `*Plazo:* ${labelPlazo}\n`
+      if (formulario.detallesTecnicos) {
+        mensaje += `*Detalles técnicos:* ${formulario.detallesTecnicos}\n`
+      }
+    }
+
+    if (formulario.mensaje) {
+      mensaje += `\n*Mensaje:* ${formulario.mensaje}`
+    }
+
+    const url = `https://wa.me/5491124555499?text=${encodeURIComponent(mensaje)}`
+
+    await new Promise((res) => setTimeout(res, 800))
+    window.open(url, '_blank', 'noopener,noreferrer')
     setEstadoEnvio('exitoso')
   }
 
