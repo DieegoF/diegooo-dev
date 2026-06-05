@@ -121,6 +121,8 @@ export function Hero() {
           <motion.a
             href="/DIEGO_FERNANDEZ_CV_2026.pdf"
             download="CV_DiegoFernandez.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center gap-2 px-8 py-4 font-semibold text-slate-200 rounded-xl cursor-pointer no-underline"
             style={{
               backgroundColor: 'rgba(15, 23, 42, 0.7)',

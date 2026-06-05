@@ -16,8 +16,10 @@ export function Navbar() {
   }, [])
 
   const navegar = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     setMenuAbierto(false)
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    }, 250)
   }
 
   return (
