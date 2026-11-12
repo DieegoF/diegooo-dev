@@ -1,13 +1,886 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>diegooo-dev</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Desarrollo de software a medida en Buenos Aires · diegodev</title>
+<meta name="description" content="Sistemas de gestión, apps de pedidos y webs para negocios en Buenos Aires y AMBA. Desarrollo y pruebas a medida. Pedí tu asesoramiento gratis.">
+<link rel="canonical" href="https://www.diegodev.com.ar/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Diego Fernandez">
+<meta name="theme-color" content="#07090c">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="diegodev">
+<meta property="og:url" content="https://www.diegodev.com.ar/">
+<meta property="og:title" content="Desarrollo de software a medida en Buenos Aires · diegodev">
+<meta property="og:description" content="Sistemas de gestión, apps de pedidos y webs para negocios en Buenos Aires y AMBA. Asesoramiento gratis.">
+<meta property="og:image" content="https://www.diegodev.com.ar/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="diegodev: software a medida que aguanta un lunes a las 9.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2307090c'/><path d='M9 17l5 5 9-11' fill='none' stroke='%232fe3c9' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://www.diegodev.com.ar/#negocio","name":"diegodev","alternateName":"diegodev · Software a medida","description":"Desarrollo de software a medida para negocios en Buenos Aires: sistemas de gestión, apps de pedidos, webs e integraciones. Asesoramiento inicial gratis.","url":"https://www.diegodev.com.ar/","telephone":"+5491124555499","email":"diegofernandez637@gmail.com","areaServed":[{"@type":"City","name":"Ciudad Autónoma de Buenos Aires"},{"@type":"AdministrativeArea","name":"Gran Buenos Aires"},{"@type":"City","name":"La Plata"}],"address":{"@type":"PostalAddress","addressLocality":"Buenos Aires","addressCountry":"AR"},"founder":{"@id":"https://www.diegodev.com.ar/#diego"},"knowsLanguage":"es","hasOfferCatalog":{"@type":"OfferCatalog","name":"Servicios","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Sistemas de gestión a medida","description":"Stock, ventas y caja, turnos y reservas, clientes y pedidos, paneles de administración."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Apps y webs para comercios","description":"Tienda online con pedidos propios, catálogos, landings y apps instalables."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Integraciones y automatización","description":"Pedidos a WhatsApp, impresoras de comandas, notificaciones y reportes automáticos."}},{"@type":"Offer","price":"0","priceCurrency":"ARS","itemOffered":{"@type":"Service","name":"Asesoramiento inicial gratis"}}]}},{"@type":"Person","@id":"https://www.diegodev.com.ar/#diego","name":"Diego Fernandez","jobTitle":"Desarrollador de software a medida","url":"https://www.diegodev.com.ar/","sameAs":["https://github.com/DieegoF","https://www.linkedin.com/in/diegofernandezcai/"]},{"@type":"WebSite","@id":"https://www.diegodev.com.ar/#web","url":"https://www.diegodev.com.ar/","name":"diegodev","inLanguage":"es-AR","publisher":{"@id":"https://www.diegodev.com.ar/#negocio"}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --canvas: #07090c;
+    --surface: #0f131a;
+    --surface-2: #141a23;
+    --ink: #e9eef3;
+    --ink-soft: #8d9aa8;
+    --ink-faint: #5d6976;
+    --accent: #2fe3c9;
+    --accent-ink: #07090c;
+    --pending: #f2b84b;
+    --fail: #ff6b6b;
+    --hairline: color-mix(in oklab, #e9eef3 9%, transparent);
+    --hairline-strong: color-mix(in oklab, #e9eef3 18%, transparent);
+    --f-display: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --f-text: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --f-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Cascadia Mono", monospace;
+    --t-xs: 0.75rem; --t-sm: 0.875rem; --t-md: 1.0625rem; --t-lg: 1.375rem;
+    --t-xl: clamp(1.75rem, 3.2vw, 2.6rem);
+    --t-2xl: clamp(2.6rem, 6.4vw, 5.6rem);
+    --g: clamp(16px, 5vw, 64px);
+    --runner-h: 46px;
+    --r-sm: 6px; --r-md: 12px; --r-pill: 999px;
+    --ease: cubic-bezier(.22,.8,.24,1);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--canvas); scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--canvas); color: var(--ink);
+    font-family: var(--f-text); font-size: var(--t-md); line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: calc(var(--runner-h) + env(safe-area-inset-bottom, 0px));
+    transition: background-color 600ms var(--ease);
+    overflow-x: clip;
+  }
+  ::selection { background: color-mix(in oklab, var(--accent) 70%, transparent); color: var(--accent-ink); }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  [hidden] { display: none !important; }
+  .mono { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: 0.02em; }
+  .wrap {
+    padding-left: max(var(--g), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--g), env(safe-area-inset-right, 0px));
+  }
+  .eyebrow { font-family: var(--f-mono); font-size: var(--t-xs); color: var(--accent); letter-spacing: 0.04em; }
+  .h2 { font-size: var(--t-xl); font-weight: 600; letter-spacing: -0.025em; line-height: 1.05; }
+  .lede { color: var(--ink-soft); max-width: 58ch; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--f-mono); font-size: var(--t-sm); text-decoration: none;
+    padding: 0.85rem 1.25rem; border-radius: var(--r-pill);
+    border: 1px solid var(--hairline-strong); color: var(--ink); background: none; cursor: pointer;
+    transition: border-color 200ms var(--ease), color 200ms var(--ease), background-color 200ms var(--ease), transform 200ms var(--ease);
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn--solid { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn--solid:hover { color: var(--accent-ink); transform: translateY(-1px); background: color-mix(in oklab, var(--accent) 88%, white); }
+  .btn[aria-disabled="true"] { background: none; color: var(--ink-faint); border-color: var(--hairline-strong); cursor: not-allowed; transform: none; }
+  .bar {
+    position: fixed; top: 0; inset-inline: 0; z-index: 40;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding-top: calc(0.9rem + env(safe-area-inset-top, 0px)); padding-bottom: 0.9rem;
+    pointer-events: none;
+  }
+  .bar > * { pointer-events: auto; }
+  .bar__mark { font-family: var(--f-mono); font-size: var(--t-sm); text-decoration: none; }
+  .bar__mark b { color: var(--accent); font-weight: 500; }
+  .bar__cta {
+    font-family: var(--f-mono); font-size: var(--t-xs); text-decoration: none;
+    padding: 0.55rem 0.9rem; border-radius: var(--r-pill);
+    border: 1px solid var(--hairline-strong);
+    background: color-mix(in oklab, var(--canvas) 70%, transparent); backdrop-filter: blur(8px);
+    transition: border-color 200ms var(--ease), color 200ms var(--ease);
+  }
+  .bar__cta:hover { border-color: var(--accent); color: var(--accent); }
+  [data-act="pin"], [data-act="pan"] { position: relative; height: calc(var(--span, 2) * 100svh); }
+  .stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+  .is-static[data-act] { height: auto; }
+  .is-static .stage { position: relative; height: auto; overflow: visible; }
+  .hero .stage { display: grid; align-items: center; }
+  .plane { position: absolute; inset: 0; pointer-events: none; will-change: transform; }
+  .plane--grid {
+    inset: -160px 0;
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(120% 80% at 70% 40%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(120% 80% at 70% 40%, #000 30%, transparent 75%);
+    transform: translate3d(0, calc(var(--p, 0) * -60px), 0);
+  }
+  .plane--word {
+    display: flex; justify-content: flex-end; align-items: flex-start;
+    padding: clamp(4.5rem, 12vh, 9rem) var(--g) 0 0;
+    font-family: var(--f-display); font-weight: 700; font-size: clamp(5rem, 15vw, 15rem);
+    line-height: 0.82; letter-spacing: -0.05em; white-space: nowrap; user-select: none;
+    color: color-mix(in oklab, var(--ink) 6%, transparent);
+    transform: translate3d(calc(var(--p, 0) * -12vw), calc(var(--p, 0) * -140px), 0);
+  }
+  .plane--glyphs { left: 34%; inset-block: -80px; opacity: 0.5; transform: translate3d(0, calc(var(--p, 0) * -260px), 0); }
+  .plane--glyphs svg { width: 100%; height: 100%; }
+  .plane--glyphs text { font-family: var(--f-mono); font-size: 13px; fill: var(--ink-soft); }
+  .plane--glyphs .ok { fill: var(--accent); }
+  .plane--slab {
+    display: flex; align-items: center; justify-content: flex-end; padding-right: clamp(0rem, 6vw, 8rem);
+    transform: translate3d(0, calc(var(--p, 0) * -320px), 0) rotate(calc(var(--p, 0) * -6deg));
+  }
+  .plane--slab svg { width: min(38vw, 520px); height: auto; overflow: visible; }
+  .hero__copy {
+    position: relative; z-index: 2; display: grid; gap: 1.4rem; max-width: 46rem;
+    padding-top: 4rem;
+    transform: translate3d(0, calc(var(--p, 0) * -80px), 0);
+    opacity: calc(1 - var(--p, 0) * 0.55);
+  }
+  .hero h1 { font-size: var(--t-2xl); font-weight: 600; letter-spacing: -0.04em; line-height: 0.98; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero__sub { color: var(--ink-soft); max-width: 42ch; font-size: var(--t-lg); line-height: 1.4; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .hero__note { color: var(--ink-faint); }
+  .act-flow { padding-block: clamp(6rem, 14vh, 10rem); }
+  .act-head { display: grid; gap: 1rem; margin-bottom: clamp(2.5rem, 6vh, 4rem); max-width: 60rem; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; }
+  .steps::before { content: ""; position: absolute; top: 7px; left: 0; right: 0; height: 1px; background: var(--hairline-strong); }
+  .step { position: relative; display: grid; gap: 0.6rem; padding: 2rem 1.25rem 0 0; min-width: 0; align-content: start; }
+  .step::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-radius: 50%;
+    background: var(--canvas); border: 1px solid var(--hairline-strong);
+  }
+  .step:first-child::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 18%, transparent); }
+  .step__n { color: var(--ink-faint); }
+  .step h3 { font-size: var(--t-lg); font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
+  .step p { color: var(--ink-soft); font-size: var(--t-sm); }
+  .tag {
+    justify-self: start; font-family: var(--f-mono); font-size: 0.6875rem; letter-spacing: 0.04em;
+    padding: 0.2rem 0.55rem; border-radius: var(--r-pill);
+    color: var(--accent); border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+  }
+  #argumento .stage { display: grid; align-content: center; gap: 2.5rem; }
+  .statement { font-size: clamp(2.1rem, 5.4vw, 4.6rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.04; max-width: 18ch; }
+  .statement .w { opacity: 0.32; transition: opacity 260ms var(--ease), color 260ms var(--ease); }
+  .statement .w.on { opacity: 1; }
+  .statement .w.hi.on { color: var(--accent); }
+  .argument__foot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; max-width: 62rem; color: var(--ink-soft); }
+  .argument__foot p { max-width: 44ch; }
+  .argument__foot strong { color: var(--ink); font-weight: 500; }
+  #casos .stage { display: grid; grid-template-rows: auto 1fr; align-content: center; gap: 2rem; padding-top: 4.5rem; }
+  .track { display: flex; gap: 1.25rem; width: max-content; will-change: transform; padding-right: var(--g); }
+  .case {
+    width: min(84vw, 30rem); display: grid; grid-template-rows: auto auto 1fr auto; gap: 1.1rem;
+    background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-md);
+    padding: 1.4rem; min-width: 0;
+  }
+  .case__top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .case__kind { color: var(--ink-faint); }
+  .case h3 { font-size: 1.75rem; font-weight: 600; letter-spacing: -0.025em; }
+  .case__vis { height: 112px; border-radius: var(--r-sm); background: var(--surface-2); border: 1px solid var(--hairline); overflow: hidden; }
+  .case__vis svg { width: 100%; height: 100%; display: block; }
+  .case__vis text { font-family: var(--f-mono); font-size: 11px; fill: var(--ink-soft); }
+  .case__vis .hl { fill: var(--accent); }
+  .case dl { margin: 0; display: grid; grid-template-columns: 7.2rem minmax(0, 1fr); gap: 0.55rem 1rem; font-size: var(--t-sm); align-content: start; }
+  .case dt { font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-faint); padding-top: 0.15rem; }
+  .case dd { margin: 0; color: var(--ink-soft); }
+  .case__links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .case__links a {
+    font-family: var(--f-mono); font-size: var(--t-xs); text-decoration: none;
+    padding: 0.45rem 0.75rem; border-radius: var(--r-pill); border: 1px solid var(--hairline-strong);
+    transition: border-color 200ms var(--ease), color 200ms var(--ease);
+  }
+  .case__links a:hover { border-color: var(--accent); color: var(--accent); }
+  .case--next { background: none; border-style: dashed; border-color: color-mix(in oklab, var(--accent) 40%, transparent); align-content: center; grid-template-rows: none; }
+  .case--next h3 { font-size: var(--t-xl); }
+  .case--next p { color: var(--ink-soft); }
+  .casos__more { color: var(--ink-faint); }
+  .casos__more a { color: var(--ink-soft); }
+  .services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--hairline); }
+  .service { padding: 1.75rem 1.75rem 2rem 0; display: grid; gap: 0.9rem; align-content: start; min-width: 0; }
+  .service + .service { padding-left: 1.75rem; border-left: 1px solid var(--hairline); }
+  .service h3 { font-size: var(--t-lg); font-weight: 600; letter-spacing: -0.015em; }
+  .service > p { color: var(--ink-soft); font-size: var(--t-sm); }
+  .service ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; font-size: var(--t-sm); }
+  .service li { display: grid; grid-template-columns: 1.1rem 1fr; }
+  .service li::before { content: "›"; color: var(--accent); font-family: var(--f-mono); }
+  .stackline { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; color: var(--ink-faint); }
+  .chip {
+    font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-soft);
+    padding: 0.3rem 0.65rem; border-radius: var(--r-pill); border: 1px solid var(--hairline);
+  }
+  .js [data-reveal].is-in { animation: rise 700ms var(--ease) both; animation-delay: var(--d, 0ms); }
+  @keyframes rise { from { transform: translateY(22px); } to { transform: none; } }
+  #presupuesto { position: relative; isolation: isolate; }
+  #presupuesto::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(520px circle at var(--mx, 70%) var(--my, 40%), color-mix(in oklab, var(--accent) 9%, transparent), transparent 70%);
+  }
+  .quote { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .quote__intro { display: grid; gap: 1.4rem; position: sticky; top: 6rem; }
+  .gets { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+  .gets li { display: grid; grid-template-columns: 1.6rem 1fr; color: var(--ink-soft); }
+  .gets li::before { content: "✓"; color: var(--accent); font-family: var(--f-mono); }
+  .gets strong { color: var(--ink); font-weight: 500; }
+  .direct { display: grid; gap: 0.35rem; color: var(--ink-faint); padding-top: 1.2rem; border-top: 1px solid var(--hairline); }
+  .direct a { color: var(--ink-soft); text-decoration: none; }
+  .direct a:hover { color: var(--accent); }
+  .brief { background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-md); overflow: hidden; }
+  .brief__head { display: flex; justify-content: space-between; gap: 1rem; padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--hairline); color: var(--ink-soft); }
+  .brief__head b { color: var(--ink); font-weight: 500; }
+  .brief form { display: grid; }
+  .q { border: 0; margin: 0; padding: 1.25rem; display: grid; gap: 0.75rem; border-bottom: 1px solid var(--hairline); min-width: 0; transition: background-color 200ms var(--ease); }
+  .q__label { padding: 0; display: flex; justify-content: space-between; gap: 1rem; width: 100%; font-weight: 500; float: left; }
+  .q__state { font-family: var(--f-mono); font-size: var(--t-xs); font-weight: 400; color: var(--ink-faint); white-space: nowrap; }
+  .q.is-ok .q__state { color: var(--accent); }
+  .q.is-missing { background: color-mix(in oklab, var(--pending) 7%, transparent); }
+  .q.is-missing .q__state { color: var(--pending); }
+  .opts { display: flex; flex-wrap: wrap; gap: 0.5rem; clear: both; }
+  .opt { position: relative; }
+  .opt input { position: absolute; opacity: 0; pointer-events: none; }
+  .opt span {
+    display: inline-block; font-size: var(--t-sm); padding: 0.5rem 0.85rem; border-radius: var(--r-pill);
+    border: 1px solid var(--hairline-strong); color: var(--ink-soft); cursor: pointer;
+    transition: border-color 180ms var(--ease), color 180ms var(--ease), background-color 180ms var(--ease);
+  }
+  .opt:hover span { border-color: color-mix(in oklab, var(--accent) 60%, transparent); color: var(--ink); }
+  .opt input:checked + span { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .opt input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .field { width: 100%; font: inherit; font-size: var(--t-md); color: var(--ink); background: var(--canvas);
+    border: 1px solid var(--hairline-strong); border-radius: var(--r-sm); padding: 0.7rem 0.85rem; }
+  .field::placeholder { color: var(--ink-faint); }
+  .field:focus { outline: none; border-color: var(--accent); }
+  textarea.field { min-height: 6.5rem; resize: vertical; line-height: 1.5; }
+  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+  .pair label { display: grid; gap: 0.35rem; font-size: var(--t-sm); color: var(--ink-soft); }
+  .hint { color: var(--ink-faint); font-size: var(--t-xs); font-family: var(--f-mono); }
+  .brief__out { padding: 1.25rem; display: grid; gap: 1rem; }
+  .req { color: var(--ink-faint); overflow-wrap: anywhere; }
+  .req b { color: var(--accent); font-weight: 500; }
+  .msg {
+    margin: 0; font-family: var(--f-mono); font-size: var(--t-xs); line-height: 1.6; color: var(--ink-soft);
+    white-space: pre-wrap; overflow-wrap: anywhere; background: var(--canvas);
+    border: 1px solid var(--hairline); border-radius: var(--r-sm); padding: 0.9rem 1rem; max-height: 14rem; overflow: auto;
+  }
+  .msg:empty::before { content: "// el mensaje se arma a medida que completás el brief"; color: var(--ink-faint); }
+  .brief__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+  .brief__copied { color: var(--accent); }
+  .foot { padding-block: 3rem 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; color: var(--ink-faint); border-top: 1px solid var(--hairline); }
+  .foot nav { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+  .foot a { text-decoration: none; color: var(--ink-soft); }
+  .foot a:hover { color: var(--accent); }
+  .runner {
+    position: fixed; bottom: 0; inset-inline: 0; z-index: 45;
+    min-height: calc(var(--runner-h) + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1rem;
+    font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-soft);
+    background: color-mix(in oklab, var(--canvas) 86%, transparent); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--hairline);
+  }
+  .runner__title { white-space: nowrap; }
+  .runner__title b { color: var(--ink); font-weight: 500; }
+  .runner__specs { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; overflow: hidden; justify-content: center; }
+  .spec {
+    display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap;
+    padding: 0.35rem 0.6rem; border-radius: var(--r-sm);
+    background: none; border: 0; color: inherit; font: inherit; cursor: pointer;
+    transition: color 200ms var(--ease), background-color 200ms var(--ease);
+  }
+  .spec:hover, .spec.is-active { color: var(--ink); background: color-mix(in oklab, var(--ink) 6%, transparent); }
+  .spec__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); flex: none; transition: background-color 260ms var(--ease), box-shadow 260ms var(--ease); }
+  .spec[data-state="pass"] .spec__dot { background: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 20%, transparent); }
+  .spec[data-state="wait"] .spec__dot { background: var(--pending); }
+  .spec[data-state="fail"] .spec__dot { background: var(--fail); }
+  .runner__count { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .runner__count b { color: var(--accent); font-weight: 500; }
+  .runner__log {
+    position: absolute; left: max(var(--g), env(safe-area-inset-left, 0px)); bottom: calc(100% + 0.6rem);
+    padding: 0.5rem 0.75rem; border-radius: var(--r-sm);
+    background: var(--surface); border: 1px solid var(--hairline-strong);
+    opacity: 0; transform: translateY(6px); pointer-events: none;
+    transition: opacity 260ms var(--ease), transform 260ms var(--ease);
+    max-width: min(64ch, calc(100vw - 2 * var(--g)));
+  }
+  .runner__log.is-on { opacity: 1; transform: none; }
+  .runner__log .ok { color: var(--accent); }
+  .runner__log .wait { color: var(--pending); }
+  @media (max-width: 960px) {
+    .steps { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+    .steps::before { top: 0; bottom: 0; left: 7px; right: auto; width: 1px; height: auto; }
+    .step { padding: 0 0 0 2.4rem; }
+    .services { grid-template-columns: minmax(0, 1fr); }
+    .service, .service + .service { padding: 1.5rem 0; border-left: 0; }
+    .service + .service { border-top: 1px solid var(--hairline); }
+    .quote { grid-template-columns: minmax(0, 1fr); }
+    .quote__intro { position: static; }
+    .argument__foot { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  }
+  @media (max-width: 760px) {
+    .plane--glyphs { left: 0; opacity: 0.22; }
+    .plane--slab { opacity: 0.35; padding-right: 0; align-items: flex-end; padding-bottom: 10vh; }
+    .plane--slab svg { width: 78vw; }
+    #casos.is-static .stage { padding-block: 5rem; }
+    #casos.is-static .track { flex-direction: column; width: auto; transform: none !important; padding-right: 0; }
+    #casos.is-static .case { width: 100%; }
+    .spec__label { display: none; }
+    .spec { padding: 0.35rem; }
+    .runner__title span { display: none; }
+    .pair { grid-template-columns: minmax(0, 1fr); }
+    .case dl { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; }
+    .case dd { margin-bottom: 0.45rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .plane, .hero__copy { transform: none !important; opacity: 1 !important; }
+    .js [data-reveal].is-in { animation: none; }
+    .statement .w { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+<header class="bar wrap">
+  <a class="bar__mark" href="#inicio">diego<b>dev</b></a>
+  <a class="bar__cta" href="#presupuesto">Asesoramiento gratis</a>
+</header>
+
+<main>
+  <section id="inicio" class="hero" data-act="pin" style="--span:2.1" data-drift="#07090c" aria-labelledby="hero-title">
+    <div class="stage wrap">
+      <div class="plane plane--grid" aria-hidden="true"></div>
+      <div class="plane plane--word" aria-hidden="true">a medida</div>
+      <div class="plane plane--glyphs" aria-hidden="true">
+        <svg viewBox="0 0 600 900" preserveAspectRatio="xMinYMin meet">
+          <text x="40" y="120">pedido.estado = "entregado"</text>
+          <text x="260" y="210">stock.descontar("SKU-0412", 3)</text>
+          <text x="90" y="330">turno.confirmar("lunes 09:00")</text>
+          <text x="300" y="440">expect(caja.cierre).toBe(total)</text>
+          <text x="20" y="560">factura.emitir(cliente)</text>
+          <text x="240" y="660">// repro: 18:55, red lenta, doble click</text>
+          <text class="ok" x="110" y="780">✓ 14 passed</text>
+        </svg>
+      </div>
+      <div class="plane plane--slab" aria-hidden="true">
+        <svg viewBox="0 0 520 420">
+          <g transform="translate(260 150)">
+            <polygon points="0,-120 208,0 0,120 -208,0" fill="#0f131a" stroke="#2fe3c9" stroke-width="1.2"/>
+            <polygon points="-208,0 0,120 0,148 -208,28" fill="#07090c" stroke="#2a313b"/>
+            <polygon points="208,0 0,120 0,148 208,28" fill="#141a23" stroke="#2a313b"/>
+            <g transform="matrix(0.866 0.5 -0.866 0.5 0 0)">
+              <text x="-118" y="-46" font-family="Geist Mono, monospace" font-size="15" fill="#8d9aa8">pedido #219</text>
+              <text x="-118" y="-16" font-family="Instrument Sans, sans-serif" font-size="26" font-weight="600" fill="#e9eef3">en camino · 8 min</text>
+              <rect x="-118" y="6" width="236" height="6" rx="3" fill="#2a313b"/>
+              <rect x="-118" y="6" width="160" height="6" rx="3" fill="#2fe3c9"/>
+              <text x="-118" y="42" font-family="Geist Mono, monospace" font-size="13" fill="#2fe3c9">✓ cobrado  ✓ impreso  ✓ despachado</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="hero__copy">
+        <p class="eyebrow">software a medida · buenos aires</p>
+        <h1 id="hero-title">Software a medida que aguanta <em>un lunes a las 9.</em></h1>
+        <p class="hero__sub">Sistemas de gestión, apps de pedidos y webs para negocios. Lo construyo, lo pruebo como lo va a usar tu equipo y lo dejo andando.</p>
+        <div class="hero__actions">
+          <a class="btn btn--solid" id="hero-cta" href="#presupuesto">Pedí asesoramiento gratis <span aria-hidden="true">→</span></a>
+          <a class="btn" href="#casos">Ver casos</a>
+        </div>
+        <p class="hero__note mono">La primera charla es gratis y sin compromiso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" class="act-flow wrap" data-act="flow" data-drift="#0a0d12" aria-labelledby="proceso-title">
+    <div class="act-head" data-reveal>
+      <p class="eyebrow">// cómo trabajamos</p>
+      <h2 class="h2" id="proceso-title">De la primera charla al sistema andando.</h2>
+      <p class="lede">Sabés en qué etapa está tu proyecto en todo momento. Nada de esperar meses para ver si salió lo que pediste.</p>
+    </div>
+    <ol class="steps">
+      <li class="step" data-reveal style="--d:0ms">
+        <span class="step__n mono">01</span>
+        <h3>Charla de asesoramiento</h3>
+        <span class="tag">gratis</span>
+        <p>Me contás qué querés resolver. Te digo si conviene hacerlo a medida o si ya existe algo que te sirva.</p>
+      </li>
+      <li class="step" data-reveal style="--d:80ms">
+        <span class="step__n mono">02</span>
+        <h3>Propuesta y presupuesto</h3>
+        <p>Alcance, plazos y precio por escrito, dividido en fases para que sepas qué pagás en cada una.</p>
+      </li>
+      <li class="step" data-reveal style="--d:160ms">
+        <span class="step__n mono">03</span>
+        <h3>Desarrollo por fases</h3>
+        <p>Al cierre de cada fase ves algo funcionando y podés corregir el rumbo antes de seguir.</p>
+      </li>
+      <li class="step" data-reveal style="--d:240ms">
+        <span class="step__n mono">04</span>
+        <h3>Pruebas de uso real</h3>
+        <p>Lo pruebo con datos de verdad, en el celular, con apuro y con la red lenta. Los errores aparecen acá y no en tu mostrador.</p>
+      </li>
+      <li class="step" data-reveal style="--d:320ms">
+        <span class="step__n mono">05</span>
+        <h3>Entrega y soporte</h3>
+        <p>Lo dejo publicado, le explico a tu equipo cómo se usa y quedo disponible para ajustes.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="argumento" data-act="pin" style="--span:2.4" data-drift="#0d1117" aria-labelledby="arg-title">
+    <div class="stage wrap">
+      <p class="eyebrow">// por qué conmigo</p>
+      <h2 class="statement" id="arg-title" data-words>Un sistema que pasa la demo no es un sistema que <span class="hi">funciona.</span></h2>
+      <div class="argument__foot">
+        <p>Funciona cuando tu empleado, apurado y con la red lenta, hace lo que nadie previó. <strong>Y sigue funcionando.</strong></p>
+        <p>Antes de programar atendí durante años a los usuarios que sufren los errores. Por eso cada cosa que entrego pasa por pruebas antes de llegar a tu negocio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="casos" data-act="pan" style="--span:4" data-drift="#080b0f" aria-labelledby="casos-title">
+    <div class="stage">
+      <div class="wrap act-head" style="margin:0">
+        <p class="eyebrow">// casos</p>
+        <h2 class="h2" id="casos-title">Cosas que ya están en uso.</h2>
+      </div>
+      <div class="wrap" style="min-width:0">
+        <div class="track" id="track">
+          <article class="case">
+            <div class="case__top"><h3>DeliFast</h3><span class="case__kind mono">producto propio</span></div>
+            <div class="case__vis" aria-hidden="true">
+              <svg viewBox="0 0 440 112" preserveAspectRatio="xMinYMid meet">
+                <text x="18" y="30">#219  2× hamburguesa · papas</text>
+                <text class="hl" x="300" y="30">en camino</text>
+                <text x="18" y="58">#220  pizza muzza · gaseosa</text>
+                <text x="300" y="58">en cocina</text>
+                <text x="18" y="86">#221  empanadas × 12</text>
+                <text x="300" y="86">impreso</text>
+              </svg>
+            </div>
+            <dl>
+              <dt>para quién</dt><dd>Locales de comida que hoy toman pedidos por WhatsApp o teléfono.</dd>
+              <dt>qué resuelve</dt><dd>Tienda online propia, panel de administración, impresión de comandas, notificaciones y seguimiento del pedido.</dd>
+              <dt>hecho con</dt><dd>.NET 8, React, SQL Server, QZ Tray, OneSignal.</dd>
+              <dt>probado con</dt><dd>Pruebas end to end en Cypress del panel y de la tienda, también en celular.</dd>
+            </dl>
+            <div class="case__links">
+              <a href="https://www.deliapp.site" target="_blank" rel="noopener">Ver el sitio ↗</a>
+              <a href="https://github.com/DieegoF/DeliFast.API" target="_blank" rel="noopener">API ↗</a>
+              <a href="https://github.com/DieegoF/DeliFast.App" target="_blank" rel="noopener">App ↗</a>
+            </div>
+          </article>
+
+          <article class="case">
+            <div class="case__top"><h3>Design GR</h3><span class="case__kind mono">cliente</span></div>
+            <div class="case__vis" aria-hidden="true">
+              <svg viewBox="0 0 440 112" preserveAspectRatio="xMinYMid meet">
+                <rect x="40" y="22" width="150" height="62" fill="none" stroke="#5d6976"/>
+                <line x1="40" y1="94" x2="190" y2="94" stroke="#2fe3c9"/>
+                <text class="hl" x="92" y="107">260 cm</text>
+                <line x1="200" y1="22" x2="200" y2="84" stroke="#2fe3c9"/>
+                <text class="hl" x="206" y="57">160</text>
+                <text x="258" y="38">consulta recibida</text>
+                <text x="258" y="60">placard · roble</text>
+                <text x="258" y="82">La Plata</text>
+              </svg>
+            </div>
+            <dl>
+              <dt>para quién</dt><dd>Carpintería de muebles a medida en La Plata, CABA y AMBA.</dd>
+              <dt>qué resuelve</dt><dd>Muestra los trabajos y convierte la visita en una consulta concreta, con un formulario validado.</dd>
+              <dt>hecho con</dt><dd>React, TypeScript, TanStack, Tailwind. Publicada en Vercel.</dd>
+              <dt>probado con</dt><dd>Validación del formulario y revisión en todos los tamaños de pantalla.</dd>
+            </dl>
+            <div class="case__links">
+              <a href="https://designgr.diegodev.com.ar" target="_blank" rel="noopener">Ver la landing ↗</a>
+              <a href="https://github.com/DieegoF/design-gr-landing" target="_blank" rel="noopener">Código ↗</a>
+            </div>
+          </article>
+
+          <article class="case">
+            <div class="case__top"><h3>Calory</h3><span class="case__kind mono">app propia</span></div>
+            <div class="case__vis" aria-hidden="true">
+              <svg viewBox="0 0 440 112" preserveAspectRatio="xMinYMid meet">
+                <text x="18" y="30">lunes 08:10 · desayuno · liviano</text>
+                <text x="18" y="58">13:05 · almuerzo · casero</text>
+                <text x="18" y="86">17:40 · merienda · fruta</text>
+                <text class="hl" x="300" y="58">+ agregar</text>
+              </svg>
+            </div>
+            <dl>
+              <dt>para quién</dt><dd>Una familia que quería registrar sus comidas sin complicarse.</dd>
+              <dt>qué resuelve</dt><dd>Cada comida se carga en diez segundos desde el celular. Cada persona ve y edita solo lo suyo.</dd>
+              <dt>hecho con</dt><dd>Next.js como app instalable, acceso con Google.</dd>
+              <dt>probado con</dt><dd>Aislamiento de datos entre usuarios y alta desde el celular.</dd>
+            </dl>
+            <div class="case__links">
+              <a href="https://calory.diegodev.com.ar" target="_blank" rel="noopener">Abrir Calory ↗</a>
+            </div>
+          </article>
+
+          <article class="case case--next">
+            <span class="eyebrow">// próximo caso</span>
+            <h3>¿Qué necesita tu negocio?</h3>
+            <p>Contame qué te está costando hoy. La primera charla es gratis.</p>
+            <div><a class="btn btn--solid" href="#presupuesto">Armar mi brief <span aria-hidden="true">→</span></a></div>
+            <p class="casos__more mono">Más en <a href="https://github.com/DieegoF" target="_blank" rel="noopener">github.com/DieegoF</a></p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="act-flow wrap" data-act="flow" data-drift="#0a0d12" aria-labelledby="serv-title">
+    <div class="act-head" data-reveal>
+      <p class="eyebrow">// servicios</p>
+      <h2 class="h2" id="serv-title">Qué puedo hacer por tu negocio.</h2>
+      <p class="lede">Si una planilla, un cuaderno o diez chats de WhatsApp ya no te alcanzan, probablemente sea alguna de estas tres.</p>
+    </div>
+    <div class="services">
+      <div class="service" data-reveal style="--d:0ms">
+        <h3>Sistemas de gestión a medida</h3>
+        <p>Para ordenar lo que hoy vive en planillas y papeles.</p>
+        <ul>
+          <li>Stock, ventas y caja</li>
+          <li>Turnos y reservas</li>
+          <li>Clientes, pedidos y presupuestos</li>
+          <li>Paneles de administración con permisos por usuario</li>
+        </ul>
+      </div>
+      <div class="service" data-reveal style="--d:90ms">
+        <h3>Apps y webs para comercios</h3>
+        <p>Para vender y recibir consultas sin depender de terceros.</p>
+        <ul>
+          <li>Tienda online con pedidos propios</li>
+          <li>Catálogo con precios actualizables</li>
+          <li>Landing que convierte visitas en consultas</li>
+          <li>App instalable en el celular</li>
+        </ul>
+      </div>
+      <div class="service" data-reveal style="--d:180ms">
+        <h3>Integraciones y automatización</h3>
+        <p>Para que tus herramientas hablen entre sí y nadie copie datos a mano.</p>
+        <ul>
+          <li>Pedidos a WhatsApp e impresoras de comandas</li>
+          <li>Notificaciones y recordatorios automáticos</li>
+          <li>Reportes que se arman solos</li>
+          <li>Conexión con sistemas que ya usás</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stackline mono" data-reveal>
+      <span>con qué lo construyo:</span>
+      <span class="chip">.NET 8</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">SQL Server</span><span class="chip">Vercel</span>
+      <span>· con qué lo pruebo:</span>
+      <span class="chip">Cypress</span><span class="chip">Postman</span><span class="chip">xUnit</span>
+    </div>
+  </section>
+
+  <section id="presupuesto" class="act-flow wrap" data-act="flow" data-drift="#07090c" aria-labelledby="pres-title">
+    <div class="quote">
+      <div class="quote__intro" data-reveal>
+        <p class="eyebrow">// asesoramiento gratis</p>
+        <h2 class="h2" id="pres-title">Contame qué querés resolver.</h2>
+        <p class="lede">Completá el brief en un minuto y te respondo dentro de las 24 horas con una primera orientación. Sin costo y sin compromiso.</p>
+        <ul class="gets">
+          <li><span><strong>Si conviene hacerlo a medida</strong> o si ya existe algo que te sirva.</span></li>
+          <li><span><strong>Cómo lo encararía:</strong> qué partes tendría y en qué orden.</span></li>
+          <li><span><strong>Qué incluiría la propuesta</strong>, para que puedas comparar con otras.</span></li>
+        </ul>
+        <div class="direct mono">
+          <span>¿Preferís escribir directo?</span>
+          <a href="https://wa.me/5491124555499" target="_blank" rel="noopener">WhatsApp · +54 9 11 2455-5499</a>
+          <a href="mailto:diegofernandez637@gmail.com">diegofernandez637@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="brief" data-reveal style="--d:120ms">
+        <div class="brief__head mono"><span><b>brief</b> tu-proyecto.spec</span><span id="brief-count">0/4 passed</span></div>
+        <form id="brief" novalidate>
+          <fieldset class="q" data-check="tipo">
+            <legend class="q__label">¿Qué necesitás? <span class="q__state">pendiente</span></legend>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="tipo" id="tipo-gestion" value="Sistema de gestión"><span>Sistema de gestión</span></label>
+              <label class="opt"><input type="radio" name="tipo" id="tipo-tienda" value="App o tienda online"><span>App o tienda online</span></label>
+              <label class="opt"><input type="radio" name="tipo" id="tipo-web" value="Página web"><span>Página web</span></label>
+              <label class="opt"><input type="radio" name="tipo" id="tipo-integ" value="Integración o automatización"><span>Integración o automatización</span></label>
+              <label class="opt"><input type="radio" name="tipo" id="tipo-nose" value="Todavía no sé"><span>Todavía no sé</span></label>
+            </div>
+          </fieldset>
+
+          <div class="q" data-check="problema">
+            <label class="q__label" for="brief-problema">¿Qué te está costando hoy? <span class="q__state">pendiente</span></label>
+            <textarea class="field" id="brief-problema" name="problema" maxlength="800" placeholder="Ej.: tomamos los pedidos por WhatsApp y los anotamos a mano; los viernes se nos pierden pedidos."></textarea>
+            <span class="hint">contalo con tus palabras, sin términos técnicos</span>
+          </div>
+
+          <fieldset class="q" data-check="plazo">
+            <legend class="q__label">¿Para cuándo lo necesitás? <span class="q__state">pendiente</span></legend>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="plazo" id="plazo-ya" value="Lo antes posible"><span>Lo antes posible</span></label>
+              <label class="opt"><input type="radio" name="plazo" id="plazo-mes" value="En uno o dos meses"><span>En uno o dos meses</span></label>
+              <label class="opt"><input type="radio" name="plazo" id="plazo-eval" value="Sin apuro, estoy evaluando"><span>Sin apuro, estoy evaluando</span></label>
+            </div>
+          </fieldset>
+
+          <div class="q" data-check="contacto">
+            <span class="q__label">¿Quién sos? <span class="q__state">pendiente</span></span>
+            <div class="pair">
+              <label for="brief-nombre">Tu nombre<input class="field" id="brief-nombre" name="nombre" autocomplete="name" maxlength="80" placeholder="Ej.: Laura"></label>
+              <label for="brief-negocio"><span>Tu negocio <span class="hint">(opcional)</span></span><input class="field" id="brief-negocio" name="negocio" autocomplete="organization" maxlength="80" placeholder="Ej.: Rotisería La Esquina"></label>
+            </div>
+          </div>
+        </form>
+
+        <div class="brief__out">
+          <p class="req mono"><b>GET</b> wa.me/5491124555499?text=<span id="brief-req">…</span></p>
+          <pre class="msg" id="brief-msg"></pre>
+          <div class="brief__actions">
+            <a class="btn btn--solid" id="brief-send" href="https://wa.me/5491124555499" target="_blank" rel="noopener" aria-disabled="true">Pedir asesoramiento por WhatsApp <span aria-hidden="true">→</span></a>
+            <button class="btn" type="button" id="brief-copy">Copiar mensaje</button>
+            <span class="brief__copied mono" id="brief-copied" hidden>copiado ✓</span>
+          </div>
+          <p class="hint">También podés copiar el mensaje y mandarlo por mail a diegofernandez637@gmail.com.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot wrap mono">
+  <span>diegodev · Diego Fernandez · Buenos Aires, Argentina</span>
+  <nav aria-label="Enlaces">
+    <a href="https://wa.me/5491124555499" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://github.com/DieegoF" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/diegofernandezcai/" target="_blank" rel="noopener">LinkedIn</a>
+  </nav>
+</footer>
+
+<nav class="runner wrap" aria-label="Specs de esta página">
+  <span class="runner__title"><b>suite</b> <span>diegodev</span></span>
+  <ul class="runner__specs" id="specs"></ul>
+  <span class="runner__count" id="count"><b>0</b>/6 passed</span>
+  <div class="runner__log" id="log" role="status" aria-live="polite"></div>
+</nav>
+
+<script>
+(() => {
+  document.documentElement.classList.add('js');
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const narrow = matchMedia('(max-width: 760px)');
+  const WA = '5491124555499';
+
+  const stmt = $('[data-words]');
+  (function split(node) {
+    [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(t => {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { frag.append(t); return; }
+          const s = document.createElement('span'); s.className = 'w'; s.textContent = t; frag.append(s);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) {
+        if (n.classList.contains('hi')) { n.classList.add('w'); } else split(n);
+      }
+    });
+  })(stmt);
+  const words = $$('.w', stmt);
+
+  const acts = $$('[data-act]');
+  const track = $('#track');
+  function setStatic() {
+    acts.forEach(a => {
+      const t = a.dataset.act;
+      const s = reduce.matches || (t === 'pan' && narrow.matches);
+      if (t !== 'flow') a.classList.toggle('is-static', s);
+    });
+  }
+  setStatic();
+  reduce.addEventListener && reduce.addEventListener('change', () => { setStatic(); tick(); });
+  narrow.addEventListener && narrow.addEventListener('change', () => { setStatic(); tick(); });
+
+  let current = null;
+  function progress(a) {
+    const r = a.getBoundingClientRect();
+    const total = r.height - innerHeight;
+    if (total <= 0) return r.top < innerHeight * 0.5 ? 1 : 0;
+    return Math.min(1, Math.max(0, -r.top / total));
+  }
+  function tick() {
+    const mid = innerHeight * 0.5;
+    acts.forEach(a => {
+      const r = a.getBoundingClientRect();
+      const t = a.dataset.act;
+      let p;
+      if (t === 'flow') {
+        p = Math.min(1, Math.max(0, (innerHeight - r.top) / (r.height + innerHeight * 0.4)));
+      } else {
+        p = a.classList.contains('is-static') ? 1 : progress(a);
+        a.style.setProperty('--p', p.toFixed(4));
+      }
+      if (a.id === 'inicio' && a.classList.contains('is-static')) a.style.setProperty('--p', '0');
+      if (a.id === 'casos') {
+        if (!a.classList.contains('is-static')) {
+          const max = Math.max(0, track.scrollWidth - track.parentElement.clientWidth);
+          track.style.transform = 'translate3d(' + (-p * max).toFixed(1) + 'px,0,0)';
+        } else track.style.transform = '';
+      }
+      if (a.id === 'argumento') {
+        const lit = reduce.matches ? words.length : Math.floor(Math.min(1, p * 1.35) * words.length + 0.0001);
+        words.forEach((w, i) => w.classList.toggle('on', i < lit));
+      }
+      if (r.top <= mid && r.bottom > mid && current !== a) {
+        current = a;
+        document.body.style.backgroundColor = a.dataset.drift || '';
+        $$('.spec').forEach(b => b.classList.toggle('is-active', b.dataset.target === a.id));
+      }
+      runSpecFor(a, p);
+    });
+  }
+  let queued = false;
+  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; tick(); }); } }, { passive: true });
+  addEventListener('resize', () => tick());
+
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -10% 0px' }) : null;
+  $$('[data-reveal]').forEach(el => io ? io.observe(el) : el.classList.add('is-in'));
+
+  const pres = $('#presupuesto');
+  pres.addEventListener('pointermove', e => {
+    const r = pres.getBoundingClientRect();
+    pres.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    pres.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+
+  const specs = [
+    { id: 'inicio', label: 'inicio', at: 0.25, expr: "expect(cta).toLink('#presupuesto')",
+      test: () => !!$('#hero-title') && $('#hero-cta').getAttribute('href') === '#presupuesto' },
+    { id: 'proceso', label: 'proceso', at: 0.45, expr: 'expect(pasos).toHaveLength(5)',
+      test: () => $$('#proceso .step').length === 5 && /gratis/.test($('#proceso .step').textContent) },
+    { id: 'argumento', label: 'por qué', at: 0.8, expr: 'expect(palabras).toBeVisible()',
+      test: () => words.length > 0 && words.every(w => w.classList.contains('on')) },
+    { id: 'casos', label: 'casos', at: 0.85, expr: 'expect(casos.links).toAllBe("https://…")',
+      test: () => $$('#casos .case__links a').every(a => a.href.indexOf('https://') === 0) },
+    { id: 'servicios', label: 'servicios', at: 0.45, expr: 'expect(servicios).toHaveLength(3)',
+      test: () => $$('#servicios .service').length === 3 },
+    { id: 'presupuesto', label: 'tu proyecto', at: 0.35, expr: 'expect(brief).toBeComplete()',
+      test: () => briefState().ok, waits: true }
+  ];
+  const list = $('#specs');
+  specs.forEach((s, i) => {
+    const li = document.createElement('li');
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'spec'; b.dataset.target = s.id; b.dataset.state = 'idle';
+    b.innerHTML = '<span class="spec__dot"></span><span class="spec__label">0' + (i + 1) + ' ' + s.label + '</span>';
+    b.setAttribute('aria-label', 'Ir a ' + s.label);
+    b.addEventListener('click', () => document.getElementById(s.id).scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth' }));
+    li.append(b); list.append(li); s.btn = b;
+  });
+  const log = $('#log'); let logT;
+  function say(html) {
+    log.innerHTML = html; log.classList.add('is-on');
+    clearTimeout(logT); logT = setTimeout(() => log.classList.remove('is-on'), 2600);
+  }
+  function setState(s, state, quiet) {
+    if (s.btn.dataset.state === state) return;
+    s.btn.dataset.state = state;
+    const n = specs.filter(x => x.btn.dataset.state === 'pass').length;
+    $('#count').innerHTML = '<b>' + n + '</b>/6 passed';
+    if (quiet) return;
+    if (state === 'pass') say('<span class="ok">✓</span> ' + s.label + ' · ' + s.expr);
+    if (state === 'wait') say('<span class="wait">○</span> ' + s.label + ' · ' + s.expr + ' <span class="wait">· falta tu brief</span>');
+  }
+  function runSpecFor(a, p) {
+    const s = specs.find(x => x.id === a.id);
+    if (!s || p < s.at) return;
+    if (s.btn.dataset.state === 'pass') return;
+    const ok = s.test();
+    setState(s, ok ? 'pass' : (s.waits ? 'wait' : (s.id === 'argumento' ? 'idle' : 'fail')));
+  }
+
+  const form = $('#brief');
+  const send = $('#brief-send');
+  const msgEl = $('#brief-msg');
+  const reqEl = $('#brief-req');
+  function val(name) { const el = form.elements[name]; return el ? (el.value || '').trim() : ''; }
+  function briefState() {
+    const tipoEl = form.querySelector('input[name="tipo"]:checked');
+    const plazoEl = form.querySelector('input[name="plazo"]:checked');
+    const tipo = tipoEl ? tipoEl.value : '';
+    const plazo = plazoEl ? plazoEl.value : '';
+    const problema = val('problema'), nombre = val('nombre'), negocio = val('negocio');
+    const checks = { tipo: !!tipo, problema: problema.length >= 15, plazo: !!plazo, contacto: nombre.length >= 2 };
+    return { tipo, plazo, problema, nombre, negocio, checks, ok: Object.values(checks).every(Boolean) };
+  }
+  function buildMsg(st) {
+    const lines = ['Hola Diego, quiero pedir el asesoramiento gratis.', ''];
+    if (st.nombre) lines.push('Soy ' + st.nombre + (st.negocio ? ' (' + st.negocio + ')' : '') + '.');
+    if (st.tipo) lines.push('Necesito: ' + st.tipo + '.');
+    if (st.problema) lines.push('Lo que me está costando hoy: ' + st.problema);
+    if (st.plazo) lines.push('Plazo: ' + st.plazo + '.');
+    lines.push('', 'Te escribo desde diegodev.com.ar');
+    return lines.join('\n');
+  }
+  let touched = false;
+  function update(showMissing) {
+    const st = briefState();
+    $$('.q', form).forEach(q => {
+      const ok = st.checks[q.dataset.check];
+      q.classList.toggle('is-ok', ok);
+      q.classList.toggle('is-missing', !ok && showMissing);
+      q.querySelector('.q__state').textContent = ok ? '✓ passed' : (showMissing ? 'falta completar' : 'pendiente');
+    });
+    const n = Object.values(st.checks).filter(Boolean).length;
+    $('#brief-count').textContent = n + '/4 passed';
+    const msg = (touched || n) ? buildMsg(st) : '';
+    msgEl.textContent = msg;
+    const enc = encodeURIComponent(msg);
+    reqEl.textContent = msg ? (enc.length > 64 ? enc.slice(0, 64) + '…' : enc) : '…';
+    send.href = 'https://wa.me/' + WA + (msg ? '?text=' + enc : '');
+    send.setAttribute('aria-disabled', st.ok ? 'false' : 'true');
+    const spec = specs[5];
+    if (st.ok) setState(spec, 'pass');
+    else if (spec.btn.dataset.state === 'pass') setState(spec, 'wait', true);
+    return st;
+  }
+  form.addEventListener('input', () => { touched = true; update(form.classList.contains('tried')); });
+  form.addEventListener('change', () => { touched = true; update(form.classList.contains('tried')); });
+  form.addEventListener('submit', e => e.preventDefault());
+  send.addEventListener('click', e => {
+    const st = update(true);
+    form.classList.add('tried');
+    if (!st.ok) {
+      e.preventDefault();
+      const first = $$('.q', form).find(q => !st.checks[q.dataset.check]);
+      if (first) {
+        first.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'center' });
+        const f = first.querySelector('input,textarea');
+        if (f) f.focus({ preventScroll: true });
+      }
+      say('<span class="wait">○</span> tu proyecto · expect(brief).toBeComplete() <span class="wait">· falta completar</span>');
+    }
+  });
+  $('#brief-copy').addEventListener('click', async () => {
+    const st = update(false);
+    const text = buildMsg(st);
+    const done = () => { const c = $('#brief-copied'); c.hidden = false; setTimeout(() => { c.hidden = true; }, 1800); };
+    try { await navigator.clipboard.writeText(text); done(); }
+    catch (err) { msgEl.textContent = text; const r = document.createRange(); r.selectNodeContents(msgEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+  });
+
+  update(false);
+  tick();
+})();
+</script>
+</body>
 </html>
