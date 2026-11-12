@@ -210,6 +210,8 @@
   .service ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; font-size: var(--t-sm); }
   .service li { display: grid; grid-template-columns: 1.1rem 1fr; }
   .service li::before { content: "›"; color: var(--accent); font-family: var(--f-mono); }
+  .service__more { justify-self: start; font-family: var(--f-mono); font-size: var(--t-xs); color: var(--accent); text-decoration: none; padding-top: 0.4rem; }
+  .service__more:hover { text-decoration: underline; text-underline-offset: 3px; }
   .stackline { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; color: var(--ink-faint); }
   .chip {
     font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-soft);
@@ -551,6 +553,7 @@
           <li>Clientes, pedidos y presupuestos</li>
           <li>Paneles de administración con permisos por usuario</li>
         </ul>
+        <a class="service__more" href="/servicios/sistemas-de-gestion">Ver sistemas de gestión →</a>
       </div>
       <div class="service" data-reveal style="--d:90ms">
         <h3>Apps y webs para comercios</h3>
@@ -561,6 +564,7 @@
           <li>Landing que convierte visitas en consultas</li>
           <li>App instalable en el celular</li>
         </ul>
+        <a class="service__more" href="/servicios/pedidos-online">Ver pedidos online →</a>
       </div>
       <div class="service" data-reveal style="--d:180ms">
         <h3>Integraciones y automatización</h3>
@@ -571,6 +575,7 @@
           <li>Reportes que se arman solos</li>
           <li>Conexión con sistemas que ya usás</li>
         </ul>
+        <a class="service__more" href="/servicios/integraciones">Ver integraciones →</a>
       </div>
     </div>
     <div class="stackline mono" data-reveal>
@@ -645,7 +650,7 @@
             <button class="btn" type="button" id="brief-copy">Copiar mensaje</button>
             <span class="brief__copied mono" id="brief-copied" hidden>copiado ✓</span>
           </div>
-          <p class="hint">También podés copiar el mensaje y mandarlo por mail a diegofernandez637@gmail.com.</p>
+          <p class="hint">También podés copiar el mensaje y mandarlo por mail a diegofernandez637@gmail.com. ¿Dudas antes de escribir? Mirá las <a href="/preguntas-frecuentes">preguntas frecuentes</a>.</p>
         </div>
       </div>
     </div>
@@ -655,6 +660,10 @@
 <footer class="foot wrap mono">
   <span>diegodev · Diego Fernandez · Buenos Aires, Argentina</span>
   <nav aria-label="Enlaces">
+    <a href="/servicios/sistemas-de-gestion">Sistemas de gestión</a>
+    <a href="/servicios/pedidos-online">Pedidos online</a>
+    <a href="/servicios/integraciones">Integraciones</a>
+    <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
     <a href="https://wa.me/5491124555499" target="_blank" rel="noopener">WhatsApp</a>
     <a href="https://github.com/DieegoF" target="_blank" rel="noopener">GitHub</a>
     <a href="https://www.linkedin.com/in/diegofernandezcai/" target="_blank" rel="noopener">LinkedIn</a>
