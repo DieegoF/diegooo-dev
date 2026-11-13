@@ -261,6 +261,10 @@
   .concept dd { margin: 0; color: var(--ink-soft); }
   .concept__links { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; }
   .concept__links .btn { padding: 0.6rem 0.95rem; font-size: var(--t-xs); }
+  .concepts__group { color: var(--ink-faint); margin: 2.5rem 0 1rem; }
+  .act-head + .concepts__group { margin-top: 0; }
+  .concept--next { background: none; border-style: dashed; border-color: color-mix(in oklab, var(--accent) 40%, transparent); align-content: center; grid-template-rows: none; }
+  .concept--next p { color: var(--ink-soft); }
   .concepts__note { margin-top: 1.5rem; color: var(--ink-faint); }
   .js [data-reveal].is-in { animation: rise 700ms var(--ease) both; animation-delay: var(--d, 0ms); }
   @keyframes rise { from { transform: translateY(22px); } to { transform: none; } }
@@ -589,8 +593,125 @@
     <div class="act-head" data-reveal>
       <p class="eyebrow">// conceptos</p>
       <h2 class="h2" id="conc-title">Así se podría ver en tu negocio.</h2>
-      <p class="lede">Estos tres no son clientes: son ejemplos ilustrativos de sistemas que puedo armar para rubros comunes. Si tu caso se parece a alguno, ya tenemos por dónde empezar.</p>
+      <p class="lede">Estos no son clientes: son ejemplos ilustrativos de lo que puedo armar para rubros comunes, desde tiendas online hasta asistentes con IA. Si tu caso se parece a alguno, ya tenemos por dónde empezar.</p>
     </div>
+    <p class="concepts__group mono" data-reveal>// tiendas online</p>
+    <div class="concepts">
+      <article class="concept" data-reveal style="--d:0ms">
+        <div class="concept__top"><span class="concept__badge">concepto · ejemplo</span><h3>Tienda online de ropa</h3></div>
+        <div class="concept__screen" role="img" aria-label="Ejemplo ilustrativo: tienda en el celular con talles, carrito y pedido pagado.">
+          <svg viewBox="0 0 400 240" aria-hidden="true">
+            <rect class="dev" x="40" y="12" width="132" height="250" rx="20"/>
+            <rect class="scr" x="48" y="20" width="116" height="250" rx="13"/>
+            <rect class="pan" x="90" y="27" width="32" height="6" rx="3"/>
+            <text class="tb" x="58" y="50">Tu marca</text>
+            <circle class="acc" cx="152" cy="46" r="7"/><text class="td" x="152" y="49" text-anchor="middle">2</text>
+            <rect class="pan" x="56" y="58" width="100" height="62" rx="6"/>
+            <path class="acc-o" d="M94 70 l7 -4 h10 l7 4 l9 9 l-6 5 l-4 -3 v26 h-22 v-26 l-4 3 l-6 -5 z"/>
+            <text class="tb" x="58" y="136">Remera oversize</text>
+            <text x="58" y="150">$ 24.900</text>
+            <text class="ta" x="58" y="162">3 cuotas sin interés</text>
+            <rect class="pan" x="56" y="170" width="20" height="16" rx="4"/><text x="66" y="181" text-anchor="middle">S</text>
+            <rect class="acc" x="80" y="170" width="20" height="16" rx="4"/><text class="td" x="90" y="181" text-anchor="middle">M</text>
+            <rect class="pan" x="104" y="170" width="20" height="16" rx="4"/><text x="114" y="181" text-anchor="middle">L</text>
+            <rect class="pan" x="128" y="170" width="24" height="16" rx="4"/><text x="140" y="181" text-anchor="middle">XL</text>
+            <rect class="acc" x="56" y="196" width="102" height="22" rx="11"/><text class="td" x="107" y="210" text-anchor="middle">Agregar al carrito</text>
+            <path class="dash" d="M160 207 C 186 207, 182 110, 206 98"/>
+            <g class="pop">
+            <rect class="pan" x="206" y="60" width="174" height="66" rx="10"/>
+            <text class="ta" x="218" y="78">pedido #3081 · pagado</text>
+            <text x="218" y="96">Remera M + jean 42</text>
+            <text class="tf" x="218" y="112">Envío a domicilio · jueves</text>
+            </g>
+            <g class="pop">
+            <rect class="pan" x="252" y="140" width="128" height="26" rx="8" style="stroke: var(--pending)"/>
+            <text class="tp" x="262" y="157">stock talle M: quedan 3</text>
+            </g>
+          </svg>
+        </div>
+        <dl>
+          <dt>hoy</dt><dd>Venden por Instagram y anotan talles, pagos y envíos en el chat.</dd>
+          <dt>con el sistema</dt><dd>Catálogo con talles y colores, pago online, stock que se descuenta solo y envío con seguimiento.</dd>
+        </dl>
+        <div class="concept__links">
+          <a class="btn" href="#presupuesto" data-concept="tipo-tienda">Quiero algo así <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="concept" data-reveal style="--d:90ms">
+        <div class="concept__top"><span class="concept__badge">concepto · ejemplo</span><h3>Pedidos online para una dietética</h3></div>
+        <div class="concept__screen" role="img" aria-label="Ejemplo ilustrativo: tienda web con productos por peso y carrito con envío por zona.">
+          <svg viewBox="0 0 400 240" aria-hidden="true">
+            <rect class="dev" x="14" y="16" width="372" height="208" rx="10"/>
+            <rect class="scr" x="20" y="34" width="360" height="184" rx="4"/>
+            <circle class="pan" cx="28" cy="25" r="3"/><circle class="pan" cx="38" cy="25" r="3"/><circle class="pan" cx="48" cy="25" r="3"/>
+            <rect class="pan" x="140" y="20" width="120" height="10" rx="5"/>
+            <text class="tb" x="32" y="54">Tu dietética</text>
+            <rect class="acc" x="32" y="62" width="64" height="16" rx="8"/><text class="td" x="64" y="73" text-anchor="middle">Frutos secos</text>
+            <rect class="pan" x="100" y="62" width="46" height="16" rx="8"/><text x="123" y="73" text-anchor="middle">Harinas</text>
+            <rect class="pan" x="150" y="62" width="52" height="16" rx="8"/><text x="176" y="73" text-anchor="middle">Especias</text>
+            <text x="32" y="100">Almendras · 500 g</text><text class="tf" x="32" y="112">$ 9.800</text>
+            <rect class="pan" x="176" y="94" width="44" height="18" rx="9"/><text x="198" y="106" text-anchor="middle">− 2 +</text>
+            <line class="ln" x1="32" y1="122" x2="220" y2="122"/>
+            <text x="32" y="140">Mix tropical · 250 g</text><text class="tf" x="32" y="152">$ 5.600</text>
+            <rect class="pan" x="176" y="134" width="44" height="18" rx="9"/><text x="198" y="146" text-anchor="middle">− 1 +</text>
+            <line class="ln" x1="32" y1="162" x2="220" y2="162"/>
+            <text x="32" y="180">Nueces mariposa · 250 g</text><text class="tf" x="32" y="192">$ 6.000</text>
+            <rect class="acc-o" x="176" y="174" width="44" height="18" rx="9"/><text class="ta" x="198" y="186" text-anchor="middle">+ sumar</text>
+            <g class="pop">
+            <rect class="pan" x="236" y="50" width="134" height="158" rx="8"/>
+            <text class="tb" x="248" y="70">Tu pedido</text>
+            <text x="248" y="90">Almendras ×2</text><text x="358" y="90" text-anchor="end">19.600</text>
+            <text x="248" y="106">Mix tropical</text><text x="358" y="106" text-anchor="end">5.600</text>
+            <text class="tf" x="248" y="122">Envío zona sur</text><text class="tf" x="358" y="122" text-anchor="end">2.500</text>
+            <line class="ln" x1="248" y1="132" x2="358" y2="132"/>
+            <text x="248" y="150">Total</text><text class="tbig" x="358" y="151" text-anchor="end">$ 27.700</text>
+            <rect class="acc" x="248" y="168" width="110" height="24" rx="12"/><text class="td" x="303" y="183" text-anchor="middle">Ir a pagar</text>
+            </g>
+          </svg>
+        </div>
+        <dl>
+          <dt>hoy</dt><dd>Las listas de precios van por WhatsApp y cada pedido se arma a mano.</dd>
+          <dt>con el sistema</dt><dd>Productos por peso o unidad, costo de envío según la zona, retiro en el local y pago online.</dd>
+        </dl>
+        <div class="concept__links">
+          <a class="btn" href="#presupuesto" data-concept="tipo-tienda">Quiero algo así <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="concept" data-reveal style="--d:180ms">
+        <div class="concept__top"><span class="concept__badge">concepto · ejemplo</span><h3>Catálogo para un mayorista</h3></div>
+        <div class="concept__screen" role="img" aria-label="Ejemplo ilustrativo: lista de precios mayorista con mínimo de compra y pedido enviado.">
+          <svg viewBox="0 0 400 240" aria-hidden="true">
+            <rect class="dev" x="18" y="14" width="300" height="214" rx="14"/>
+            <rect class="scr" x="28" y="24" width="280" height="194" rx="6"/>
+            <text class="tb" x="40" y="46">Lista mayorista</text>
+            <text class="ta" x="296" y="46" text-anchor="end">actualizada hoy</text>
+            <text class="tf" x="40" y="66">producto</text><text class="tf" x="176" y="66">bulto</text><text class="tf" x="216" y="66">precio</text><text class="tf" x="296" y="66" text-anchor="end">cant.</text>
+            <line class="ln" x1="40" y1="72" x2="296" y2="72"/>
+            <text x="40" y="88">Yerba 1 kg</text><text x="176" y="88">×10</text><text x="216" y="88">$ 48.500</text><text class="ta" x="296" y="88" text-anchor="end">2</text>
+            <text x="40" y="106">Aceite girasol 1,5 L</text><text x="176" y="106">×12</text><text x="216" y="106">$ 39.900</text><text class="ta" x="296" y="106" text-anchor="end">1</text>
+            <text x="40" y="124">Fideos tirabuzón</text><text x="176" y="124">×20</text><text x="216" y="124">$ 25.500</text><text class="ta" x="296" y="124" text-anchor="end">1</text>
+            <text x="40" y="142">Galletitas surtidas</text><text x="176" y="142">×24</text><text x="216" y="142">$ 31.200</text><text class="tf" x="296" y="142" text-anchor="end">0</text>
+            <line class="ln" x1="40" y1="154" x2="296" y2="154"/>
+            <text class="tf" x="40" y="172">mínimo $ 150.000</text>
+            <text class="ta" x="40" y="186">llevás $ 193.400 ✓</text>
+            <rect class="acc" x="196" y="170" width="100" height="24" rx="12"/><text class="td" x="246" y="185" text-anchor="middle">Enviar pedido</text>
+            <g class="pop">
+            <rect class="pan" x="228" y="198" width="164" height="40" rx="10"/>
+            <text class="ta" x="240" y="214">pedido #552 recibido</text>
+            <text class="tf" x="240" y="228">sale en el reparto de mañana</text>
+            </g>
+          </svg>
+        </div>
+        <dl>
+          <dt>hoy</dt><dd>La lista de precios es un PDF que queda viejo apenas se manda.</dd>
+          <dt>con el sistema</dt><dd>Lista siempre actualizada, precios por bulto, mínimo de compra y pedidos que llegan ordenados para el reparto.</dd>
+        </dl>
+        <div class="concept__links">
+          <a class="btn" href="#presupuesto" data-concept="tipo-tienda">Quiero algo así <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+    <p class="concepts__group mono" data-reveal>// gestión del día a día</p>
     <div class="concepts">
       <article class="concept" data-reveal style="--d:0ms">
         <div class="concept__top"><span class="concept__badge">concepto · ejemplo</span><h3>Turnos para una veterinaria</h3></div>
@@ -709,6 +830,136 @@
         <div class="concept__links">
           <a class="btn" href="#presupuesto" data-concept="tipo-integ">Quiero algo así <span aria-hidden="true">→</span></a>
         </div>
+      </article>
+    </div>
+    <p class="concepts__group mono" data-reveal>// automatización e IA</p>
+    <div class="concepts">
+      <article class="concept" data-reveal style="--d:0ms">
+        <div class="concept__top"><span class="concept__badge">concepto · ejemplo</span><h3>Asistente con IA para una inmobiliaria</h3></div>
+        <div class="concept__screen" role="img" aria-label="Ejemplo ilustrativo: asistente que responde consultas por WhatsApp y agenda visitas.">
+          <svg viewBox="0 0 400 240" aria-hidden="true">
+            <rect class="dev" x="40" y="12" width="132" height="250" rx="20"/>
+            <rect class="scr" x="48" y="20" width="116" height="250" rx="13"/>
+            <rect class="pan" x="90" y="27" width="32" height="6" rx="3"/>
+            <text class="tb" x="58" y="50">Tu inmobiliaria</text>
+            <text class="ta" x="58" y="62">asistente 24 h</text>
+            <rect class="acc-o" x="84" y="70" width="74" height="34" rx="8"/>
+            <text x="90" y="84">¿Hay 2 amb.</text><text x="90" y="97">en Caballito?</text>
+            <rect class="pan" x="56" y="110" width="100" height="34" rx="8"/>
+            <text x="62" y="124">Sí, hay 3. Desde</text><text x="62" y="137">$ 620.000 + exp.</text>
+            <rect class="pan" x="56" y="150" width="100" height="22" rx="8"/>
+            <text x="62" y="164">¿Agendamos visita?</text>
+            <rect class="acc-o" x="96" y="180" width="62" height="20" rx="8"/>
+            <text x="102" y="193">Sí, sábado</text>
+            <path class="dash" d="M160 190 C 186 190, 182 112, 206 100"/>
+            <g class="pop">
+            <rect class="pan" x="206" y="62" width="174" height="68" rx="10"/>
+            <text class="ta" x="218" y="80">visita agendada</text>
+            <text x="218" y="98">Sáb 11:00 · Rojas 800</text>
+            <text class="tf" x="218" y="114">Asignada a Paula · aviso enviado</text>
+            </g>
+            <g class="pop">
+            <rect class="pan" x="236" y="144" width="144" height="40" rx="8"/>
+            <text class="tf" x="248" y="160">¿consulta difícil?</text>
+            <text x="248" y="174">pasa a una persona</text>
+            </g>
+          </svg>
+        </div>
+        <dl>
+          <dt>hoy</dt><dd>Las consultas llegan de noche o en fin de semana y se enfrían antes de responder.</dd>
+          <dt>con el sistema</dt><dd>Un asistente con IA responde con tus propiedades reales, agenda visitas y pasa a una persona lo que no puede resolver.</dd>
+        </dl>
+        <div class="concept__links">
+          <a class="btn" href="#presupuesto" data-concept="tipo-integ">Quiero algo así <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="concept" data-reveal style="--d:90ms">
+        <div class="concept__top"><span class="concept__badge">concepto · ejemplo</span><h3>Pase con QR para un gimnasio</h3></div>
+        <div class="concept__screen" role="img" aria-label="Ejemplo ilustrativo: pase con QR en el celular, registro de accesos y aviso de cuotas vencidas.">
+          <svg viewBox="0 0 400 240" aria-hidden="true">
+            <rect class="dev" x="40" y="12" width="132" height="250" rx="20"/>
+            <rect class="scr" x="48" y="20" width="116" height="250" rx="13"/>
+            <rect class="pan" x="90" y="27" width="32" height="6" rx="3"/>
+            <text class="tb" x="58" y="50">Tu gimnasio</text>
+            <text class="tf" x="58" y="64">Pase de Lucía G.</text>
+            <rect class="pan" x="64" y="84" width="82" height="82" rx="6" style="fill: var(--surface)"/>
+            <rect class="acc" x="96" y="92" width="6" height="6"/>
+            <rect class="acc" x="102" y="92" width="6" height="6"/>
+            <rect class="acc" x="96" y="98" width="6" height="6"/>
+            <rect class="acc" x="108" y="98" width="6" height="6"/>
+            <rect class="acc" x="96" y="104" width="6" height="6"/>
+            <rect class="acc" x="108" y="104" width="6" height="6"/>
+            <rect class="acc" x="96" y="110" width="6" height="6"/>
+            <rect class="acc" x="102" y="110" width="6" height="6"/>
+            <rect class="acc" x="108" y="110" width="6" height="6"/>
+            <rect class="acc" x="72" y="116" width="6" height="6"/>
+            <rect class="acc" x="84" y="116" width="6" height="6"/>
+            <rect class="acc" x="90" y="116" width="6" height="6"/>
+            <rect class="acc" x="114" y="116" width="6" height="6"/>
+            <rect class="acc" x="126" y="116" width="6" height="6"/>
+            <rect class="acc" x="72" y="122" width="6" height="6"/>
+            <rect class="acc" x="78" y="122" width="6" height="6"/>
+            <rect class="acc" x="84" y="122" width="6" height="6"/>
+            <rect class="acc" x="90" y="122" width="6" height="6"/>
+            <rect class="acc" x="102" y="122" width="6" height="6"/>
+            <rect class="acc" x="120" y="122" width="6" height="6"/>
+            <rect class="acc" x="132" y="122" width="6" height="6"/>
+            <rect class="acc" x="72" y="128" width="6" height="6"/>
+            <rect class="acc" x="78" y="128" width="6" height="6"/>
+            <rect class="acc" x="90" y="128" width="6" height="6"/>
+            <rect class="acc" x="96" y="128" width="6" height="6"/>
+            <rect class="acc" x="108" y="128" width="6" height="6"/>
+            <rect class="acc" x="114" y="128" width="6" height="6"/>
+            <rect class="acc" x="132" y="128" width="6" height="6"/>
+            <rect class="acc" x="120" y="134" width="6" height="6"/>
+            <rect class="acc" x="132" y="134" width="6" height="6"/>
+            <rect class="acc" x="96" y="140" width="6" height="6"/>
+            <rect class="acc" x="108" y="140" width="6" height="6"/>
+            <rect class="acc" x="114" y="140" width="6" height="6"/>
+            <rect class="acc" x="120" y="140" width="6" height="6"/>
+            <rect class="acc" x="108" y="146" width="6" height="6"/>
+            <rect class="acc" x="132" y="146" width="6" height="6"/>
+            <rect class="acc" x="108" y="152" width="6" height="6"/>
+            <rect class="acc" x="120" y="152" width="6" height="6"/>
+            <rect class="acc" x="72" y="92" width="22" height="22" rx="2"/>
+            <rect class="scr" x="75" y="95" width="16" height="16"/>
+            <rect class="acc" x="78" y="98" width="10" height="10"/>
+            <rect class="acc" x="116" y="92" width="22" height="22" rx="2"/>
+            <rect class="scr" x="119" y="95" width="16" height="16"/>
+            <rect class="acc" x="122" y="98" width="10" height="10"/>
+            <rect class="acc" x="72" y="136" width="22" height="22" rx="2"/>
+            <rect class="scr" x="75" y="139" width="16" height="16"/>
+            <rect class="acc" x="78" y="142" width="10" height="10"/>
+            <text class="ta" x="106" y="182" text-anchor="middle">al día hasta 10/12</text>
+            <rect class="pan" x="56" y="194" width="102" height="22" rx="11"/><text x="107" y="208" text-anchor="middle">QR para entrar</text>
+            <path class="dash" d="M150 124 C 180 124, 182 92, 206 88"/>
+            <g class="pop">
+            <rect class="pan" x="206" y="60" width="174" height="56" rx="10"/>
+            <text class="ta" x="218" y="78">acceso · 07:42</text>
+            <text x="218" y="96">Lucía G. · musculación ✓</text>
+            <text class="tf" x="218" y="108">hoy: 64 ingresos</text>
+            </g>
+            <g class="pop">
+            <rect class="pan" x="206" y="128" width="174" height="56" rx="10" style="stroke: var(--pending)"/>
+            <text class="tp" x="218" y="146">3 cuotas vencidas</text>
+            <text x="218" y="164">recordatorio enviado</text>
+            <text class="tf" x="218" y="176">con link de pago</text>
+            </g>
+          </svg>
+        </div>
+        <dl>
+          <dt>hoy</dt><dd>Las cuotas se cobran en efectivo y una planilla dice quién pagó (cuando está al día).</dd>
+          <dt>con el sistema</dt><dd>Pase con QR en el celular, control de acceso, cobro online y aviso automático de cuota vencida.</dd>
+        </dl>
+        <div class="concept__links">
+          <a class="btn" href="#presupuesto" data-concept="tipo-gestion">Quiero algo así <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="concept concept--next" data-reveal style="--d:180ms">
+        <span class="eyebrow">// tu rubro</span>
+        <h3>¿No ves el tuyo?</h3>
+        <p>Estos son solo ejemplos. Contame cómo trabajás hoy y te digo qué se puede automatizar.</p>
+        <div><a class="btn btn--solid" href="#presupuesto">Armar mi brief <span aria-hidden="true">→</span></a></div>
       </article>
     </div>
     <p class="concepts__note mono" data-reveal>* Negocios, nombres y montos inventados. Las pantallas son diseños de ejemplo, no capturas de sistemas en uso.</p>
