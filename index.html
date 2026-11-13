@@ -230,6 +230,38 @@
   .product__links .btn { padding: 0.65rem 1rem; font-size: var(--t-xs); }
   .product__sub { font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-soft); text-decoration: none; }
   .product__sub:hover { color: var(--accent); }
+  .concepts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+  .concept { display: grid; grid-template-rows: auto auto 1fr auto; gap: 1.1rem; padding: 1.4rem; background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-md); min-width: 0; }
+  .concept__top { display: grid; justify-items: start; gap: 0.7rem; }
+  .concept h3 { font-size: var(--t-lg); font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
+  .concept__badge { font-family: var(--f-mono); font-size: 0.6875rem; letter-spacing: 0.04em; padding: 0.2rem 0.55rem; border-radius: var(--r-pill); color: var(--pending); border: 1px dashed color-mix(in oklab, var(--pending) 55%, transparent); white-space: nowrap; }
+  .concept__screen { aspect-ratio: 5 / 3; border-radius: var(--r-sm); background: radial-gradient(90% 80% at 30% 20%, color-mix(in oklab, var(--accent) 7%, var(--surface-2)), var(--surface-2)); border: 1px solid var(--hairline); overflow: hidden; }
+  .concept__screen svg { width: 100%; height: 100%; display: block; }
+  .concept__screen text { font-family: var(--f-mono); font-size: 8px; fill: var(--ink-soft); }
+  .concept__screen .tb { font-family: var(--f-display); font-weight: 600; font-size: 10px; fill: var(--ink); }
+  .concept__screen .tbig { font-family: var(--f-display); font-weight: 600; font-size: 13px; fill: var(--ink); }
+  .concept__screen .tf { fill: var(--ink-faint); }
+  .concept__screen .ta { fill: var(--accent); }
+  .concept__screen .tp { fill: var(--pending); }
+  .concept__screen .td { fill: var(--accent-ink); }
+  .concept__screen .tx { text-decoration: line-through; fill: var(--ink-faint); }
+  .concept__screen .dev { fill: var(--canvas); stroke: var(--hairline-strong); }
+  .concept__screen .scr { fill: var(--surface); }
+  .concept__screen .pan { fill: var(--surface-2); stroke: var(--hairline); }
+  .concept__screen .ln { stroke: var(--hairline); }
+  .concept__screen .acc { fill: var(--accent); }
+  .concept__screen .acc-o { fill: color-mix(in oklab, var(--accent) 14%, transparent); stroke: var(--accent); }
+  .concept__screen .pen { fill: var(--pending); }
+  .concept__screen .dash { fill: none; stroke: var(--accent); stroke-dasharray: 3 4; opacity: 0.6; }
+  .js .concept .pop { opacity: 0; }
+  .js .concept.is-in .pop { animation: pop 520ms var(--ease) both; animation-delay: calc(var(--d, 0ms) + 520ms); transform-box: fill-box; transform-origin: center; }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.96); } to { opacity: 1; transform: none; } }
+  .concept dl { margin: 0; display: grid; grid-template-columns: 6.6rem minmax(0, 1fr); gap: 0.5rem 0.9rem; font-size: var(--t-sm); align-content: start; }
+  .concept dt { font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-faint); padding-top: 0.15rem; }
+  .concept dd { margin: 0; color: var(--ink-soft); }
+  .concept__links { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; }
+  .concept__links .btn { padding: 0.6rem 0.95rem; font-size: var(--t-xs); }
+  .concepts__note { margin-top: 1.5rem; color: var(--ink-faint); }
   .js [data-reveal].is-in { animation: rise 700ms var(--ease) both; animation-delay: var(--d, 0ms); }
   @keyframes rise { from { transform: translateY(22px); } to { transform: none; } }
   #presupuesto { position: relative; isolation: isolate; }
@@ -332,6 +364,7 @@
     .step { padding: 0 0 0 2.4rem; }
     .services { grid-template-columns: minmax(0, 1fr); }
     .products { grid-template-columns: minmax(0, 1fr); }
+    .concepts { grid-template-columns: minmax(0, 1fr); max-width: 34rem; }
     .service, .service + .service { padding: 1.5rem 0; border-left: 0; }
     .service + .service { border-top: 1px solid var(--hairline); }
     .quote { grid-template-columns: minmax(0, 1fr); }
@@ -356,6 +389,7 @@
     html { scroll-behavior: auto; }
     .plane, .hero__copy { transform: none !important; opacity: 1 !important; }
     .js [data-reveal].is-in { animation: none; }
+    .js .concept .pop, .js .concept.is-in .pop { opacity: 1; animation: none; }
     .statement .w { opacity: 1; }
   }
 </style>
@@ -549,6 +583,135 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section id="conceptos" class="act-flow wrap" aria-labelledby="conc-title">
+    <div class="act-head" data-reveal>
+      <p class="eyebrow">// conceptos</p>
+      <h2 class="h2" id="conc-title">Así se podría ver en tu negocio.</h2>
+      <p class="lede">Estos tres no son clientes: son ejemplos ilustrativos de sistemas que puedo armar para rubros comunes. Si tu caso se parece a alguno, ya tenemos por dónde empezar.</p>
+    </div>
+    <div class="concepts">
+      <article class="concept" data-reveal style="--d:0ms">
+        <div class="concept__top"><span class="concept__badge">concepto · ejemplo</span><h3>Turnos para una veterinaria</h3></div>
+        <div class="concept__screen" role="img" aria-label="Ejemplo ilustrativo: app de turnos en el celular y recordatorio automático por WhatsApp.">
+          <svg viewBox="0 0 400 240" aria-hidden="true">
+            <rect class="dev" x="40" y="12" width="132" height="250" rx="20"/>
+            <rect class="scr" x="48" y="20" width="116" height="250" rx="13"/>
+            <rect class="pan" x="90" y="27" width="32" height="6" rx="3"/>
+            <text class="tb" x="58" y="52">Tu veterinaria</text>
+            <text class="tf" x="58" y="65">Elegí día y horario</text>
+            <rect class="pan" x="56" y="74" width="18" height="22" rx="5"/><text x="65" y="88" text-anchor="middle">Lu</text>
+            <rect class="pan" x="77" y="74" width="18" height="22" rx="5"/><text x="86" y="88" text-anchor="middle">Ma</text>
+            <rect class="acc" x="98" y="74" width="18" height="22" rx="5"/><text class="td" x="107" y="88" text-anchor="middle">Mi</text>
+            <rect class="pan" x="119" y="74" width="18" height="22" rx="5"/><text x="128" y="88" text-anchor="middle">Ju</text>
+            <rect class="pan" x="140" y="74" width="18" height="22" rx="5"/><text x="149" y="88" text-anchor="middle">Vi</text>
+            <rect class="pan" x="56" y="106" width="48" height="19" rx="5"/><text x="80" y="119" text-anchor="middle">09:00</text>
+            <rect class="pan" x="110" y="106" width="48" height="19" rx="5"/><text class="tx" x="134" y="119" text-anchor="middle">09:30</text>
+            <rect class="acc-o" x="56" y="130" width="48" height="19" rx="5"/><text class="ta" x="80" y="143" text-anchor="middle">10:00</text>
+            <rect class="pan" x="110" y="130" width="48" height="19" rx="5"/><text x="134" y="143" text-anchor="middle">10:30</text>
+            <rect class="pan" x="56" y="154" width="48" height="19" rx="5"/><text class="tx" x="80" y="167" text-anchor="middle">11:00</text>
+            <rect class="pan" x="110" y="154" width="48" height="19" rx="5"/><text x="134" y="167" text-anchor="middle">11:30</text>
+            <text class="tf" x="58" y="190">Toby · vacuna anual</text>
+            <rect class="acc" x="56" y="198" width="102" height="22" rx="11"/><text class="td" x="107" y="212" text-anchor="middle">Confirmar turno</text>
+            <path class="dash" d="M160 209 C 185 209, 180 120, 204 108"/>
+            <g class="pop">
+              <rect class="pan" x="204" y="58" width="176" height="80" rx="10"/>
+              <text class="ta" x="216" y="76">recordatorio automático</text>
+              <text x="216" y="94">Hola Laura, mañana a las</text>
+              <text x="216" y="107">10:00 tenés turno con Toby.</text>
+              <text class="tf" x="216" y="124">Respondé 1 para confirmar.</text>
+            </g>
+            <g class="pop">
+              <rect class="acc-o" x="318" y="148" width="62" height="24" rx="10"/>
+              <text class="ta" x="349" y="164" text-anchor="middle">1  ✓✓</text>
+            </g>
+          </svg>
+        </div>
+        <dl>
+          <dt>hoy</dt><dd>Turnos anotados en un cuaderno y clientes que se olvidan de venir.</dd>
+          <dt>con el sistema</dt><dd>Reserva desde el celular, agenda por profesional y recordatorio automático el día anterior.</dd>
+        </dl>
+        <div class="concept__links">
+          <a class="btn" href="#presupuesto" data-concept="tipo-gestion">Quiero algo así <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="concept" data-reveal style="--d:90ms">
+        <div class="concept__top"><span class="concept__badge">concepto · ejemplo</span><h3>Stock y caja para una ferretería</h3></div>
+        <div class="concept__screen" role="img" aria-label="Ejemplo ilustrativo: panel de caja del día y stock bajo en una notebook.">
+          <svg viewBox="0 0 400 240" aria-hidden="true">
+            <rect class="dev" x="30" y="16" width="340" height="196" rx="10"/>
+            <rect class="scr" x="38" y="24" width="324" height="180" rx="4"/>
+            <path class="pan" d="M8 212 H392 L378 226 H22 Z"/>
+            <rect class="pan" x="38" y="24" width="68" height="180"/>
+            <text class="tb" x="46" y="44">Tu ferretería</text>
+            <rect class="acc-o" x="44" y="56" width="56" height="16" rx="4"/><text class="ta" x="50" y="67">Caja</text>
+            <text x="50" y="87">Stock</text>
+            <text x="50" y="105">Ventas</text>
+            <text x="50" y="123">Clientes</text>
+            <text x="50" y="141">Reportes</text>
+            <text class="tb" x="116" y="44">Caja del día · jueves</text>
+            <rect class="pan" x="116" y="54" width="80" height="40" rx="5"/>
+            <text class="tf" x="124" y="67">ventas hoy</text><text class="tbig" x="124" y="86">$ 412.300</text>
+            <rect class="pan" x="202" y="54" width="70" height="40" rx="5"/>
+            <text class="tf" x="210" y="67">tickets</text><text class="tbig" x="210" y="86">58</text>
+            <g class="pop">
+              <rect class="pan" x="278" y="54" width="76" height="40" rx="5" style="stroke: var(--pending)"/>
+              <text class="tf" x="286" y="67">stock bajo</text><text class="tbig tp" x="286" y="86">7</text>
+            </g>
+            <text class="tf" x="116" y="114">producto</text><text class="tf" x="296" y="114">stock</text>
+            <line class="ln" x1="116" y1="119" x2="354" y2="119"/>
+            <text x="116" y="134">Tornillo autoperforante 8×1</text><text class="tp" x="296" y="134">12</text><circle class="pen" cx="346" cy="131" r="3"/>
+            <text x="116" y="151">Látex interior 20 L</text><text class="tp" x="296" y="151">4</text><circle class="pen" cx="346" cy="148" r="3"/>
+            <text x="116" y="168">Cinta aisladora</text><text x="296" y="168">85</text><circle class="acc" cx="346" cy="165" r="3"/>
+            <text x="116" y="185">Mecha widia 6 mm</text><text x="296" y="185">31</text><circle class="acc" cx="346" cy="182" r="3"/>
+          </svg>
+        </div>
+        <dl>
+          <dt>hoy</dt><dd>El stock vive en una planilla que nadie actualiza y la caja se cuadra a mano al cierre.</dd>
+          <dt>con el sistema</dt><dd>Venta, stock y caja en un mismo lugar, con aviso cuando algo se está por terminar.</dd>
+        </dl>
+        <div class="concept__links">
+          <a class="btn" href="#presupuesto" data-concept="tipo-gestion">Quiero algo así <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="concept" data-reveal style="--d:180ms">
+        <div class="concept__top"><span class="concept__badge">concepto · ejemplo</span><h3>Órdenes para un taller mecánico</h3></div>
+        <div class="concept__screen" role="img" aria-label="Ejemplo ilustrativo: orden de trabajo en una tablet y aviso automático al cliente cuando el auto está listo.">
+          <svg viewBox="0 0 400 240" aria-hidden="true">
+            <rect class="dev" x="18" y="16" width="254" height="212" rx="14"/>
+            <rect class="scr" x="28" y="26" width="234" height="192" rx="6"/>
+            <text class="tb" x="40" y="50">Orden #1043</text>
+            <text class="tf" x="250" y="50" text-anchor="end">Tu taller</text>
+            <text class="tf" x="40" y="66">Peugeot 208 · AB 123 CD · Martín</text>
+            <line class="ln" x1="40" y1="76" x2="250" y2="76"/>
+            <rect class="acc" x="40" y="88" width="10" height="10" rx="2"/><text x="58" y="96">Cambio de aceite y filtro</text>
+            <rect class="acc" x="40" y="108" width="10" height="10" rx="2"/><text x="58" y="116">Pastillas de freno delanteras</text>
+            <rect class="acc" x="40" y="128" width="10" height="10" rx="2"/><text x="58" y="136">Alineación y balanceo</text>
+            <rect class="acc" x="40" y="148" width="10" height="10" rx="2"/><text x="58" y="156">Prueba de ruta</text>
+            <rect class="acc-o" x="40" y="176" width="104" height="22" rx="11"/><text class="ta" x="92" y="190" text-anchor="middle">listo para retirar</text>
+            <text class="tbig" x="250" y="192" text-anchor="end">$ 186.000</text>
+            <g class="pop">
+              <rect class="pan" x="214" y="84" width="174" height="66" rx="10"/>
+              <circle class="acc" cx="230" cy="101" r="6"/>
+              <text class="tf" x="242" y="104">aviso al cliente · ahora</text>
+              <text x="226" y="122">Martín, tu 208 ya está listo.</text>
+              <text class="tf" x="226" y="137">Total $ 186.000. Te esperamos.</text>
+            </g>
+          </svg>
+        </div>
+        <dl>
+          <dt>hoy</dt><dd>Presupuestos en papel y el teléfono sonando para preguntar si el auto ya está.</dd>
+          <dt>con el sistema</dt><dd>Orden de trabajo con cada tarea, presupuesto aprobado por el cliente y aviso automático al terminar.</dd>
+        </dl>
+        <div class="concept__links">
+          <a class="btn" href="#presupuesto" data-concept="tipo-integ">Quiero algo así <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+    <p class="concepts__note mono" data-reveal>* Negocios, nombres y montos inventados. Las pantallas son diseños de ejemplo, no capturas de sistemas en uso.</p>
   </section>
 
   <section id="servicios" class="act-flow wrap" data-act="flow" data-drift="#0a0d12" aria-labelledby="serv-title">
@@ -938,6 +1101,11 @@
     try { await navigator.clipboard.writeText(text); done(); }
     catch (err) { msgEl.textContent = text; const r = document.createRange(); r.selectNodeContents(msgEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
   });
+
+  $$('[data-concept]').forEach(a => a.addEventListener('click', () => {
+    const r = document.getElementById(a.dataset.concept);
+    if (r && !form.querySelector('input[name="tipo"]:checked')) { r.checked = true; form.dispatchEvent(new Event('change')); }
+  }));
 
   update(false);
   tick();
