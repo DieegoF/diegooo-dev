@@ -466,13 +466,16 @@
   }
 
   /* ====== Loader de entrada (stickers) ====== */
-  #dd-loader{animation:dd-failsafe 0s 6s forwards;position:fixed;inset:0;z-index:9999;background:#fff;overflow:hidden;
+  #dd-loader{animation:dd-failsafe 0s 13s forwards;position:fixed;inset:0;z-index:9999;background:#fff;overflow:hidden;
     font-family:"Instrument Sans",system-ui,sans-serif;color:#000;touch-action:none;
     clip-path:inset(0 0 0 0);transition:clip-path .8s cubic-bezier(.77,0,.18,1)}
   #dd-loader.is-out{clip-path:inset(0 0 100% 0)}
   #dd-loader .tape{position:absolute;top:0;left:0;right:0;height:30px;background:#000;color:#fff;
     font-size:13px;display:flex;align-items:center;white-space:nowrap;overflow:hidden}
   #dd-loader .tape span{display:inline-block;padding-left:100%;animation:dd-tape 14s linear infinite}
+  #dd-loader .skip{position:absolute;top:46px;right:clamp(16px,4vw,48px);font:600 14px "Instrument Sans",system-ui,sans-serif;
+    padding:10px 18px;border-radius:999px;border:1px solid #000;background:#000;color:#fff;cursor:pointer}
+  #dd-loader .skip:hover{background:#fff;color:#000}
   @keyframes dd-failsafe{to{visibility:hidden;pointer-events:none}}
   @keyframes dd-tape{to{transform:translateX(-100%)}}
   #dd-loader .st{position:absolute;left:0;top:0;padding:12px 20px;border:1px solid #000;border-radius:999px;
@@ -498,6 +501,7 @@
   <div class="tape"><span>Asesoramiento gratis · Respuesta en 24 horas · CABA, GBA y La Plata · Software a medida para negocios · Probado como lo va a usar tu equipo</span></div>
   <div class="count"><small>Armando tu sistema</small><b>0</b></div>
   <div class="hint">Arrastrá las piezas ↗</div>
+  <button class="skip" type="button">Entrar →</button>
 </div>
 
 <script>
@@ -508,7 +512,7 @@
     ["Clientes","#e9ccff"],["WhatsApp","#c9f2dd"],["Reportes","#dceeff"],["Facturas","#ffffff"],
     ["Envíos","#e9ccff"],["diegodev","#ffd731","brand"]
   ];
-  const MIN_MS = 2400;                 // duración mínima para que se vea
+  const MIN_MS = 10000;                 // duración mínima para que se vea
   const root = document.getElementById("dd-loader");
   const num = root.querySelector(".count b");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -589,6 +593,7 @@
   });
   root.addEventListener("pointerup", ()=>{ drag = null; });
   root.addEventListener("pointerleave", ()=>{ pointer.x = pointer.y = -999; });
+  root.querySelector(".skip").addEventListener("click", ()=>{ if(!done){ num.textContent = 100; finish(); }});
   // Escape o doble clic en el fondo: saltear
   addEventListener("keydown", e=>{ if(e.key==="Escape" && !done){ num.textContent = 100; finish(); }});
   root.addEventListener("dblclick", e=>{ if(!e.target.closest(".st") && !done){ num.textContent = 100; finish(); }});
@@ -604,7 +609,7 @@
     }
     PIECES.forEach((_,i)=> setTimeout(()=>{ try{ spawn(i) }catch(e){} }, 120 + i*170));
     cancelAnimationFrame(raf); raf = requestAnimationFrame(safeStep);
-    setTimeout(()=>{ if(!done){ num.textContent = 100; finish(); } }, 4000);
+    setTimeout(()=>{ if(!done){ num.textContent = 100; finish(); } }, 11000);
   }
 
   // solo la primera vez por sesión
