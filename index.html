@@ -466,13 +466,14 @@
   }
 
   /* ====== Loader de entrada (stickers) ====== */
-  #dd-loader{position:fixed;inset:0;z-index:9999;background:#fff;overflow:hidden;
+  #dd-loader{animation:dd-failsafe 0s 6s forwards;position:fixed;inset:0;z-index:9999;background:#fff;overflow:hidden;
     font-family:"Instrument Sans",system-ui,sans-serif;color:#000;touch-action:none;
     clip-path:inset(0 0 0 0);transition:clip-path .8s cubic-bezier(.77,0,.18,1)}
   #dd-loader.is-out{clip-path:inset(0 0 100% 0)}
   #dd-loader .tape{position:absolute;top:0;left:0;right:0;height:30px;background:#000;color:#fff;
     font-size:13px;display:flex;align-items:center;white-space:nowrap;overflow:hidden}
   #dd-loader .tape span{display:inline-block;padding-left:100%;animation:dd-tape 14s linear infinite}
+  @keyframes dd-failsafe{to{visibility:hidden;pointer-events:none}}
   @keyframes dd-tape{to{transform:translateX(-100%)}}
   #dd-loader .st{position:absolute;left:0;top:0;padding:12px 20px;border:1px solid #000;border-radius:999px;
     font-weight:600;font-size:clamp(15px,2.2vw,22px);white-space:nowrap;cursor:grab;user-select:none;
@@ -558,13 +559,15 @@
     pointer.vx *= .8; pointer.vy *= .8;
     // contador
     const p = Math.min(1, (performance.now() - start) / MIN_MS);
-    const pageReady = document.readyState === "complete";
+    const pageReady = document.readyState !== "loading";
     const shown = Math.floor((pageReady ? p : Math.min(p,.9)) * 100);
     num.textContent = shown;
     if(shown >= 100 && !done) finish();
-    raf = requestAnimationFrame(step);
+    raf = requestAnimationFrame(safeStep);
   }
 
+  function safeStep(){ try{ step() }catch(e){ kill() } }
+  function kill(){ done = true; cancelAnimationFrame(raf); root.style.display='none'; document.documentElement.style.overflow=''; }
   function finish(){
     done = true;
     setTimeout(()=>{ root.classList.add("is-out");
@@ -599,13 +602,14 @@
       PIECES.forEach((_,i)=>{ const b = spawn(i); b.y = H() - b.h - 20 - (i%3)*70; b.x = 20 + (i*137)%(W()-b.w-40); b.r = 0; b.el.style.transform=`translate(${b.x}px,${b.y}px)`; });
       setTimeout(()=>{ num.textContent = 100; finish(); }, 900); return;
     }
-    PIECES.forEach((_,i)=> setTimeout(()=>spawn(i), 120 + i*170));
-    cancelAnimationFrame(raf); raf = requestAnimationFrame(step);
+    PIECES.forEach((_,i)=> setTimeout(()=>{ try{ spawn(i) }catch(e){} }, 120 + i*170));
+    cancelAnimationFrame(raf); raf = requestAnimationFrame(safeStep);
+    setTimeout(()=>{ if(!done){ num.textContent = 100; finish(); } }, 4000);
   }
 
   // solo la primera vez por sesión
   let seen = false; try{ seen = sessionStorage.getItem("dd-loader") === "1"; sessionStorage.setItem("dd-loader","1"); }catch(e){}
-  if(seen){ root.style.display = "none"; } else run();
+  if(seen){ root.style.display = "none"; } else { try{ run() }catch(e){ kill() } }
 
 })();
 </script>
